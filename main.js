@@ -1,19 +1,23 @@
 $(document).ready(function() {
 
-    $('form').on('submit', function(e) {
-        e.preventDefault();
+    $('form').on('submit', function(evento) {
+        
+        evento.preventDefault();
 
-        const nomeTarefa = $('#tarefa').val();
+        const tarefa = $('#tarefa');
+        const nomeTarefa = tarefa.val();
         const tarefas = $('#tarefas');
 
         const novaTarefa = $(`<li id=${nomeTarefa}>${nomeTarefa}</li>`);
         
        $(tarefas).append(novaTarefa);
 
-       $(novaTarefa).click(function(e) {
-        e.preventDefault();
-        $('li').addClass('riscar-tarefa');
-       })
-   })
-})
+       tarefa.val('');
+   });
 
+   $('#tarefas').on('click', function(evento) {
+    const tarefa = $(evento.target);
+    tarefa.addClass('riscar-tarefa');
+   });
+
+});
